@@ -2,7 +2,7 @@
 Manual Blind SQL Injection  
   
 Some trick:  
-I supply to you 5 loop variable l1 to l5 {l1} {l2} {l3} {l4} {l5}  
+I supply to you 5 loop variables l1 to l5 {l1} {l2} {l3} {l4} {l5}  
   
 Blind query statament:  
 {CONDITION_QUERY}  
