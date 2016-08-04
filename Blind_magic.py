@@ -37,9 +37,6 @@ class Blind_magic:
         full_url = full_url.format(OPERATOR=operator)
         # print full_url
         start_time = datetime.now()
-        traceback_template = '''Traceback (most recent call last):
-File "%(filename)s", line %(lineno)s, in %(name)s
-%(type)s: %(message)s\n''' # Skipping the "actual line" item
         try:
             r = requests.get(full_url,timeout=self.duration)
         except:
