@@ -1,4 +1,4 @@
-# blind_magic 0.1.1 (first blood)  
+# blind_magic 0.1.2  
 Manual Blind SQL Injection  
   
 Some trick:  
