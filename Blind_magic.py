@@ -1,6 +1,5 @@
 __author__ = 'Truong_noob'
 import requests
-import sys,traceback
 from datetime import datetime
 class Blind_magic:
     def __init__(self):
