@@ -1,0 +1,4 @@
+0.1.2 => 0.1.3
+Decreasing loopers from 5 to 4
+Change loop setter function (l()) to set_l1(), set_l2(), set_l3(), set_l4()
+Add more debug informations
